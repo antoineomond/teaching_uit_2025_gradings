@@ -1,25 +1,29 @@
 # Report
 ## introduction
-The relevance of the benchmark is well described (what is it used for, who uses it).
+The relevance of the benchmark is well described.
+The benchmark is CPU bound, single threaded and doesn't use floating point operations.
 The problem it aims to tackle is meaningful.
 What was learned in this work is described.
 
 ## methods
 The benchmark has been described.
-
-The theoretical performances have been estimated.
-
-The experimental setup is described (parameters, metrics, hardware, VM, etc.)
-
 The profiler used to find the hotspot is presented. A presentation of the hotspot is given. 
 
-The tools to measure the performances are given, an explanation of why these tools is given. 
+The parameters, metrics and hardware of the experiments are given and explained. 
+How time was measured is given and explained.
+How many runs was done is given and explained.
+
+A C and asm versions are given. 
+It is explained how to compile and execute the asm and C versions.
+The C version of the benchmark compiles, terminates correctly and gives the expected result.
+The asm version of the benchmark compiles, terminates correctly and gives the expected result.
+For each version, two executions give the same results.
 
 ## results
-The results are well presented, using tables or figures for clarity.
-
 A comparison between the assembly implementation and the compiled gcc version is given.
-An explanation of why one or the other is faster is given.
+Results are well presented, using tables or figures for clarity.
+Explanation about the differences in terms of performances between C and asm versions is given.
+The theoretical performances have been estimated and compared with experiment results.
 
 An optimisation of the assembly code is given.
 A comparison between multiple optimised assembly code versions and gcc optimisation flags is given.
