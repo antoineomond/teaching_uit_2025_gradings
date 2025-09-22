@@ -6,22 +6,18 @@
 
 # add your student repos here
 repos='
-tbo066
-pbr027
-ada118
-todan0741
-aneri9852
-trkal4430
-likli8138
-jla149
-tla114
-ommos0357
-thnyg9624
-raols3585
-jso078
-est135
-trurn9229
-hva028
+microbenchmark-group
+microbenchmark-fent-salesman
+microbenchmark-oblig1
+microbenchmark-theodor-san-co
+microbenchmark-spaghetti
+microbenchmark-assignment1
+microbenchmark-timeo
+microbenchmark-g-b
+microbenchmark-paper
+microbenchmark-abdullahi-julian
+microbenchmark-ahmed
+microbenchmark-super-awesome-team-name-2
 '
 
 # commit message
