@@ -32,13 +32,15 @@ TheodorTredal
 Voldset
 VegardChr
 henriksenjoakim
+merciech
+yoursteelingmyname
 '
 
 # missing
 # Vegard Christensen  (good)
 # Ivan Ellefsen
 # Joakim Henriksen (good)
-# Chloé Mercier
+# Chloé Mercier (good)
 # Robby Varun Veerasingam (don't do it)
 # Yevhen Verkhalantsev 
 # Tetiana Verkhalantseva 

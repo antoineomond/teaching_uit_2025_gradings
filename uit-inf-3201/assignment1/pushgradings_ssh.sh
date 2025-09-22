@@ -33,6 +33,8 @@ TheodorTredal
 Voldset
 VegardChr
 henriksenjoakim
+merciech
+yoursteelingmyname
 '
 
 # commit message
