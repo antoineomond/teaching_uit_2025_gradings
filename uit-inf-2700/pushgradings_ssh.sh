@@ -4,31 +4,11 @@
 # will push all .md files in repo
 # pushes everything to "gradings" branch
 
-# add your student repos here
-repos='
-tbo066
-pbr027
-ada118
-todan0741
-aneri9852
-trkal4430
-likli8138
-jla149
-tla114
-ommos0357
-thnyg9624
-raols3585
-jso078
-est135
-trurn9229
-hva028
-'
-
 # commit message
 # change to your liking
 commit_message="Added grading"
 
-for r in ${repos}
+for r in $(cat group-3.txt)
 do
     echo "${r}"
     if [ -d "${r}" ]; then
