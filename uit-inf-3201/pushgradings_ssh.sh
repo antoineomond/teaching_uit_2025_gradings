@@ -5,43 +5,11 @@
 # pushes everything to "gradings" branch
 
 # add your student repos here
-repos='
-AlanDemirbas
-dajes8144
-caa037
-Tigergutt33
-stixxert
-borkbr
-Confibula
-SanderGott
-Jebus201
-ebheines
-HansHjermundrud
-maxtwotouch
-mkr176
-IverMortensen
-nergaard02
-retorded
-KristianHarvey
-MaltheB
-737BassTP
-RubenRogne
-Krornes
-Danispeed
-ExoEfe
-TheodorTredal
-Voldset
-VegardChr
-henriksenjoakim
-merciech
-yoursteelingmyname
-'
-
 # commit message
 # change to your liking
 commit_message="Added grading"
 
-for r in ${repos}
+for r in $(cat to_grade.txt)
 do
     echo "${r}"
     if [ -d "${r}" ]; then
@@ -54,20 +22,19 @@ do
             # Check if 'gradings' branch exists
             # if not, create it
             # if it does, switch to it
-            if ! git rev-parse --verify gradings >/dev/null 2>&1; then
-                echo "Branch 'gradings' does not exist. Creating..."
-                git checkout -b gradings
-            else
-                echo "Switching to existing 'gradings' branch..."
-                git checkout gradings
-            fi
+            #if ! git rev-parse --verify gradings >/dev/null 2>&1; then
+            #    echo "Branch 'gradings' does not exist. Creating..."
+            #    git checkout -b gradings
+            #else
+            #    echo "Switching to existing 'gradings' branch..."
+            #    git checkout gradings
+            #fi
 
             # Add all .md files and commit with message
             git add '*.md'
             git commit -m "${commit_message}"
 
-            # Push the changes to the "gradings" branch
-            git push -u origin gradings
+            git push -u origin main
 
             echo "Grading added"
         else
