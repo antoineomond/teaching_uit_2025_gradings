@@ -49,5 +49,5 @@ for d in os.listdir(abs_path):
             matches.append("Empty repository")
     all_matches[d] = matches
 max_size = len(max((k for k in all_matches.keys()), key=len))
-for k,v in all_matches.items():
-    print(f"{k} {' '*(max_size-len(k))} | {v}")
+for k in sorted(all_matches.keys()):
+    print(f"{k} {' '*(max_size-len(k))} | {all_matches[k]}")
