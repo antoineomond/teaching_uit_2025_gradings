@@ -4,26 +4,48 @@ import subprocess
 
 with open("name-email.csv") as f:
     name_email = [r for r in csv.reader(f)]
-#print(name_email)
-d = "/home/aomond/teaching_uit_2025/gradings/uit-inf-2200/assignment2/mips-simulator-submissions/mips-simulator-ase"
-all_files = subprocess.check_output(f'find {d} -type f | grep -Ev ".git|.pdf|.png|.jpg|.jpeg"', shell=True).decode("utf-8").strip().split("\n")
-matches = []
-for f_name in all_files:
-    with open(f_name) as f:
-        print(f_name)
-        for l in f.read().split("\n"):
-            for ne in name_email:
-                for e in ne[:-1]:
-                    if e in l:
-                        matches.append((e, ne, l))
-print(matches)
-#print(all_files)
+abs_path = "/home/aomond/teaching_uit_2025/gradings/uit-inf-2200/assignment2/mips-simulator-submissions"
+#d = "/home/aomond/teaching_uit_2025/gradings/uit-inf-2200/assignment2/mips-simulator-submissions/mips-simulator-assignment-2"
+all_matches = {}
+for d in os.listdir(abs_path):
+    #print(d)
+    student_dir = f"{abs_path}/{d}"
+    #all_files = subprocess.check_output(f'find {student_dir} -type f | grep -Ev ".git|.png|.jpg|.jpeg|__pycache__"', shell=True).decode("utf-8").strip().split("\n")
+    matches = []
+    try:
+        all_files = subprocess.check_output(f'find {student_dir} -type f | grep .pdf', shell=True).decode("utf-8").strip().split("\n")
+        for f_name in all_files:
+            if not f_name.endswith(".pdf"):
+                with open(f_name) as f:
+                    #print(f_name)
+                    try: 
+                        for l in f.read().split("\n"):
+                            for ne in name_email:
+                                for e in ne[:-1]:
+                                    if e in l:
+                                        matches.append((ne, f_name))
+                    except UnicodeDecodeError as e:
+                        print(f_name)
+                        print(e)
+            else:
+                for ne in name_email:
+                    #search_string = "|".join(ne[:-1])
+                    search_string = "|".join(ne[:-1])
+                    try:
+                        g = subprocess.check_output(f'pdfgrep -Pi "{search_string}" "{f_name}"', shell=True)
+                        m = f"{ne[0]},{ne[1]},{ne[-1]}"
+                        if m not in matches:
+                            matches.append(m)
+                    except subprocess.CalledProcessError as e:
+                        continue
+                    #matches.append((e, ne, f_name))
+    except subprocess.CalledProcessError:
+        matches.append("no .pdf file in the repo")
+    #for k in matches:
+    #    print(k)
+    all_matches[d] = matches
+    #print(all_files)
+max_size = len(max((k for k in all_matches.keys()), key=len))
+for k,v in all_matches.items():
+    print(f"{k} {' '*(max_size-len(k))} | {v}")
 
-# #!/usr/bin/bash
-# 
-# 
-# while IFS=',' read -ra ADDR; do
-#   for i in "${ADDR[@]}"; do
-#     echo "$i"
-#   done
-# done < name-email.csv

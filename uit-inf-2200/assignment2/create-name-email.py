@@ -25,7 +25,7 @@ with open("name-email.csv", "w") as f:
             for sg in g:
                 if sg["user_id"] == s["id"]:
                     g_str = str(i + 1)
-        #if g_str == "": print(s['name'])  # print teachers/TAs
+        if g_str == "": print(s['name'])  # print teachers/TAs
         last_name,first_names = s['sortable_name'].split(", ")
-        f.write(f"{s['name']},{s['email']},{s['email'].split('@')[0]},{last_name},{first_names},{first_names.split()[0]},{last_name} {first_names.split()[0]},{first_names.split()[0]} {last_name},{g_str}\n")
+        f.write(f"{s['name']},{s['email']},{s['email'].split('@')[0]},{last_name} {first_names.split()[0]},{first_names.split()[0]} {last_name},{g_str}\n")
 
