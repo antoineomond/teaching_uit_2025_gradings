@@ -10,10 +10,10 @@ all_matches = {}
 for d in os.listdir(abs_path):
     #print(d)
     student_dir = f"{abs_path}/{d}"
-    #all_files = subprocess.check_output(f'find {student_dir} -type f | grep -Ev ".git|.png|.jpg|.jpeg|__pycache__"', shell=True).decode("utf-8").strip().split("\n")
     matches = []
     try:
-        all_files = subprocess.check_output(f'find {student_dir} -type f | grep .pdf', shell=True).decode("utf-8").strip().split("\n")
+        all_files = subprocess.check_output(f'find {student_dir} -type f | grep -Ev ".git|.png|.jpg|.jpeg|__pycache__|.DS_Store|.zip"', shell=True).decode("utf-8").strip().split("\n")
+        #all_files = subprocess.check_output(f'find {student_dir} -type f | grep .pdf', shell=True).decode("utf-8").strip().split("\n")
         for f_name in all_files:
             if not f_name.endswith(".pdf"):
                 with open(f_name) as f:
@@ -40,7 +40,7 @@ for d in os.listdir(abs_path):
                         continue
                     #matches.append((e, ne, f_name))
     except subprocess.CalledProcessError:
-        matches.append("no .pdf file in the repo")
+        pass
     #for k in matches:
     #    print(k)
     all_matches[d] = matches
