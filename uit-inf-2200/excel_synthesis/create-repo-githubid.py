@@ -24,7 +24,9 @@ for k in r:
     # Don't take lines that do not correspond to student repo (e.g., headers)
     if url.startswith("https://"):
         url = url.replace("https://github.com/uit-inf-2200/", "")
+        for i in range(len(students)):
+            students[i] = students[i].replace(",","")
         all_names[url] = students
 max_size = len(max((k for k in all_names.keys()), key=len))
 for k in sorted(all_names.keys()):
-    print(f"{k} {' '*(max_size-len(k))} | {"".join(all_names[k])}")
+    print(f"{k} {' '*(max_size-len(k))},{";".join(all_names[k])}")

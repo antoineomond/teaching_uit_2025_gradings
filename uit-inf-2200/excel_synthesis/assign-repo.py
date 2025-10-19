@@ -57,10 +57,9 @@ max_size_1 = len(max((k[1] for k in all_matches), key=len))
 max_size_2 = len(max((k[2] for k in all_matches), key=len))
 max_size_3 = len(max((k[3] for k in all_matches), key=len))
 for k in sorted(all_matches, key=lambda x: x[0]):
-    print(f"{k[0]}{' '*(max_size_0 - len(k[0]))} | {k[1]}{' '*(max_size_1 - len(k[1]))} | {k[2]}{' '*(max_size_2 - len(k[2]))} | {k[3]}")
-exit()
-max_size = len(max((k for k in all_matches.keys()), key=len))
-max_size_v0 = len(max((k[0] for k in all_matches.values()), key=len))
-max_size_v1 = len(max((k[1] for k in all_matches.values()), key=len))
-for k in sorted(all_matches.keys()):
-    print(f"{k}{' '*(max_size-len(k))} | {all_matches[k][0]}{' '*(max_size_v0-len(all_matches[k][0]))}")
+    print(f"{k[0]}{' '*(max_size_0 - len(k[0]))},{k[1]}{' '*(max_size_1 - len(k[1]))},{k[2]}{' '*(max_size_2 - len(k[2]))},{k[3]}")
+#max_size = len(max((k for k in all_matches.keys()), key=len))
+#max_size_v0 = len(max((k[0] for k in all_matches.values()), key=len))
+#max_size_v1 = len(max((k[1] for k in all_matches.values()), key=len))
+#for k in sorted(all_matches.keys()):
+#    print(f"{k}{' '*(max_size-len(k))} | {all_matches[k][0]}{' '*(max_size_v0-len(all_matches[k][0]))}")

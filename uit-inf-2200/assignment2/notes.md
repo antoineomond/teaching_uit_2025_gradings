@@ -1,7 +1,4 @@
-Pipelining?
-Olav og Jens
-Andreas og Thomas
-Espen & Carita
-Sindre
-Rasmus og Trond-Einar
-Anders og Damian
+empty repo:
+- mips-simulator-klg
+- mips-simulator-super-awesome-team-name-2-part-2
+

@@ -4,25 +4,16 @@
 # will push all .md files in repo
 # pushes everything to "gradings" branch
 
-# add your student repos here
-repos='
-microbenchmark-group
-microbenchmark-fent-salesman
-microbenchmark-oblig1
-microbenchmark-theodor-san-co
-microbenchmark-spaghetti
-microbenchmark-assignment1
-microbenchmark-timeo
-microbenchmark-g-b
-microbenchmark-paper
-microbenchmark-abdullahi-julian
-microbenchmark-ahmed
-microbenchmark-super-awesome-team-name-2
-'
+set -e
 
-# commit message
-# change to your liking
+if [[ $# -eq 0 ]]; then
+	echo "specify assignment repo"
+	exit
+fi
+
 commit_message="Added grading"
+repos="$(cat $1-groups.txt)"
+cd "$1"
 
 for r in ${repos}
 do
