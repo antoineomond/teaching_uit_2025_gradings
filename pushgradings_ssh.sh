@@ -22,26 +22,26 @@ do
         cd "${r}"
 
         # Check if there are changes
-        if [ -n "$(git status --porcelain)" ]; then
+        if [ -n "$(git status --porcelain | grep .md)" ]; then
             echo "Adding grading for ${r}..."
-
-            # Check if 'gradings' branch exists
-            # if not, create it
-            # if it does, switch to it
-            if ! git rev-parse --verify gradings >/dev/null 2>&1; then
-                echo "Branch 'gradings' does not exist. Creating..."
-                git checkout -b gradings
-            else
-                echo "Switching to existing 'gradings' branch..."
-                git checkout gradings
-            fi
+						
+						# Check if 'master' or 'main' branch exists
+						if git ls-remote --exit-code --heads origin master >/dev/null 2>&1; then
+								target_branch="master"
+						elif git ls-remote --exit-code --heads origin main >/dev/null 2>&1; then
+								target_branch="main"
+						else
+								echo "\033[0;31mNeither 'master' nor 'main' branch exists in the remote for ${r}. Skipping repo.\033[0m"
+								cd - > /dev/null
+								continue
+						fi
 
             # Add all .md files and commit with message
             git add '*.md'
             git commit -m "${commit_message}"
 
             # Push the changes to the "gradings" branch
-            git push -u origin gradings
+            git push origin "${target_branch}"
 
             echo "Grading added"
         else
